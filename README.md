@@ -32,7 +32,6 @@ They do not include basics such as BFS, DFS, regular queues.. but they do includ
   - Dinic's Max-Flow Algorithm
   
 - String Processing
-  - KMP's Algorithm
   - Z Algorithm
   - Trie
   - Hashing class
