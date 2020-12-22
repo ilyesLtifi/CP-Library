@@ -6,6 +6,15 @@
 * 		return the sum of [l; r] interval in the array
 */
 
+struct Fenwick {
+	int n = N, _offset; int arr[N+1];
+	Fenwick(int offset=0){ _offset = offset; }
+	void updateAdd(int qI, int qVal) { qI+=_offset; while(qI <= n){ arr[qI] += qVal; qI += (qI & -qI); } }
+	int querySum(int qI) { int ans = 0; while(qI > 0){ ans += arr[qI]; qI -= (qI & -qI); } return ans; }
+	int querySum(int qL, int qR){ qL+=_offset, qR+=_offset; return (qL <= qR) ? querySum(qR) - querySum(qL-1) : 0; }
+};
+
+
 template<typename T, int _N, int _offset = 0> struct Fenwick {
 	int n = _N; T arr[_N+1];
 	void updateAdd(int qI, T qVal) { qI+=_offset; while(qI <= n){ arr[qI] += qVal; qI += (qI & -qI); } }

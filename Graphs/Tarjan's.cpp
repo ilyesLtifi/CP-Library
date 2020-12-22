@@ -41,7 +41,7 @@ struct Tarjan{
 	void dfs(int u, int prv) {
 		dfsIndex[u] = lowest[u] = ++nbDfs;
 		for(int v: adj[u]) {
-			if (dfsIndex[v] == -1) { dfs(v, u); lowest[u] = min(lowest[u], lowest[v]); if(lowest[v] == dfsIndex[v]) bridges.insert(pii(u,v)); }
+			if (dfsIndex[v] == -1) { dfs(v, u); lowest[u] = min(lowest[u], lowest[v]); if(lowest[v] == dfsIndex[v]) bridges.insert(minmax(u,v)); }
 			else if(v != prv) lowest[u] = min(lowest[u], lowest[v]);
 		}
 	}

@@ -9,6 +9,49 @@
 TOO LAZY TO PUSH TO MY CHILDREN
 NOT TOO LAZY TO PUSH TO MYSELF
 
+struct Node{ LL mini = 0, lazy = 0; LL valueMini(){ return mini+lazy; } };
+struct SegmentTree{
+	int n; vector<Node> tree;
+    SegmentTree(int size){ n = (1<<(int)ceil(log2(size))); tree.assign(2*n, Node()); }
+	LL queryMini(const int& qL, const int& qR){ return queryMini(qL, qR, 1, 1, n); }
+	LL queryMini(const int& qL, const int& qR, int i, int st, int en) {
+		if (en < qL || qR < st) return INFLL;
+		if (qL <= st && en <= qR) return tree[i].valueMini();
+
+		tree[2*i].lazy += tree[i].lazy;
+		tree[2*i+1].lazy += tree[i].lazy;
+		tree[i].lazy = 0;
+ 
+		int mid = (st + en) / 2;
+		LL l = queryMini(qL, qR, 2*i, st, mid);
+		LL r = queryMini(qL, qR, 2*i+1, mid+1, en);
+ 
+		tree[i].mini = min(tree[2*i].valueMini(), tree[2*i+1].valueMini());
+ 
+		return min(l, r);
+	}
+	inline void updateAdd(const int& qL, const int& qR, const LL& qVal){ updateAdd(qL, qR, qVal, 1, 1, n); }
+	inline void updateAdd(const int& qL, const int& qR, const LL& qVal, int i, int st, int en) {
+        if (en < qL || qR < st) return;
+		if (qL <= st && en <= qR) { tree[i].lazy += qVal; return; }
+		
+		tree[2*i].lazy += tree[i].lazy;
+		tree[2*i+1].lazy += tree[i].lazy;
+		tree[i].lazy = 0;
+ 
+		int mid = (st + en) / 2;
+		updateAdd(qL, qR, qVal, 2*i, st, mid);
+		updateAdd(qL, qR, qVal, 2*i+1, mid+1, en);
+ 
+		tree[i].mini = min(tree[2*i].valueMini(), tree[2*i+1].valueMini());
+	}
+};
+SegmentTree segt(N);
+
+
+-------------------
+
+
 template<typename T> struct Node{ T mini = INF; };                   // CHANGE HERE
 template<typename T, int _n> struct SegmentTree{
 	int n = (1<<(int)ceil(log2(_n))); Node<T> tree[2*n];
@@ -30,6 +73,9 @@ template<typename T, int _n> struct SegmentTree{
 		}
 	}
 };
+
+
+-------------------
 
 
 enum Query{Mini, Maxi, Sum}; enum Update{Add};

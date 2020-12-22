@@ -35,8 +35,16 @@ template<typename T, int n> struct SumTable{
 
 // PARENT SPARSE TABLE ON TREE
 
-template<typename T, int n> struct ParentTable{
-	T arr[__lg(n)+1][n+1];
+struct ParentTable{
+	int arr[LG+1][N+1];
+	int& base(int x){ return arr[0][x]; }
+	void computeAll(int n){ for(int i=1; i<=lg[n]; ++i) for(int x=1; x<=n; ++x) arr[i][x] = arr[i-1][arr[i-1][x]]; }
+	int get(int x, int len){ while(len > 0){ int i=lg[len]; len -= (1<<i); x = arr[i][x]; } return x; }
+};
+
+
+template<int n> struct ParentTable{
+	int arr[__lg(n)+1][n+1];
 	int& base(int x){ return arr[0][x]; }
 	void computeAll(){ for(int i=1; i<=lg[n]; ++i) for(int x=1; x<=n; ++x) if(dep[x] >= (1<<i)) arr[i][x] = arr[i-1][arr[i-1][x]]; }
 	int get(int x, int len){ while(len > 0){ int i=lg[len]; len -= (1<<i); x = arr[i][x]; } return x; }
