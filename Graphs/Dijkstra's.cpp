@@ -7,7 +7,7 @@
 void dijkst(int _src, LL _dist[]){
 	for(int i=1; i<=n; ++i) _dist[i] = INFLL;
 	_dist[_src] = 0;
-	set<pii> _sss;
+	set<pair<LL,int>> _sss;
 	for(int i=1; i<=n; ++i) _sss.insert({_dist[i], i});
 	while(!empty(_sss)){
 		LL d; int u;

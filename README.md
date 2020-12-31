@@ -9,6 +9,8 @@ These are all well tested against hundreds of problems each having tens of tests
 
 Implemented as classes/structs to allow as much generic use as possible and to minimize bugs when importing in problem solving competitions.
 
+I have also implemented some random generator tools to quickly make test cases and stress test my solutions(with bash scripts).
+
 They do not include basics such as BFS, DFS, regular queues.. but they do include:
 
 - Data Structures
