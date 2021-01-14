@@ -8,4 +8,3 @@ for(int i=1; i<=n; ++i) {
 	if (it != end(lis)) lis.erase(it);
 	lis.insert(X);
 }
-cout << size(lis) << ln;
