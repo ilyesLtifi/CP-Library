@@ -3,11 +3,11 @@
 * It also includes segments/lines/circles/polygons algorithms and queries
 */
 
-namespace gg{
+namespace Geo{
 	const LD EPS = 1e-16L, PI = acos(-1.0L);
-	inline bool EQ(const LD &a, const LD &b){return fabs(a-b) < EPS;}
-	inline bool LT(const LD &a, const LD &b){return fabs(a-b) > EPS && a < b;}
-	inline bool GT(const LD &a, const LD &b){return fabs(a-b) > EPS && a > b;}
+	bool EQ(const LD &a, const LD &b){return fabs(a-b) < EPS;}
+	bool LT(const LD &a, const LD &b){return fabs(a-b) > EPS && a < b;}
+	bool GT(const LD &a, const LD &b){return fabs(a-b) > EPS && a > b;}
 	#define LTE(a,b) (!GT(a,b))
 	#define GTE(a,b) (!LT(a,b))
 	#define Vector Point
@@ -92,4 +92,4 @@ namespace gg{
 		}
 		return {c, r};
 	}
-} using namespace gg;
+} using namespace Geo;
