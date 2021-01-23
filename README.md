@@ -17,6 +17,7 @@ They do not include basics such as BFS, DFS, regular queues.. but they do includ
   - Fenwick Tree (Binary Indexed Tree)
   - Segment Tree
   - Sparse Table
+  - Treap (Randomized Binary Search Tree)
   - AVL Tree
   - Ordered Set (On top of C++'s Red Black Tree)
 
