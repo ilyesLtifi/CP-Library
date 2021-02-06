@@ -1,7 +1,7 @@
 # CP-Library
 
-### [LinkedIn](https://linkedin.com/in/ilyes-ltifi)
-### [Codeforces Profile](https://codeforces.com/profile/GLAYS)
+### [My LinkedIn](https://linkedin.com/in/ilyes-ltifi)
+### [My Codeforces profile](https://codeforces.com/profile/GLAYS)
 
 These are my implementations' library of the Algorithms and Data Structures I use in Competitive Programming.
 
