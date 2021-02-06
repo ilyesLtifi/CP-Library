@@ -6,8 +6,9 @@
 * Finally call maxFlow() which works in O(V*V*E)
 */
 
-template<typename T> struct Dinic {
-	struct Edge { int from, to; T cap, flow; };
+struct Dinic {
+	// #define int long long
+	struct Edge { int from, to; int cap, flow; };
 	vector<vector<int>> adj;
 	vector<Edge> e;
 	vector<int> level, edgeCount;
@@ -19,7 +20,7 @@ template<typename T> struct Dinic {
 		edgeCount.assign(n+1, 0);
 		e.clear();
 	}
-	void addEdge(int a, int b, T cap) {
+	void addEdge(int a, int b, int cap) {
 		adj[a].emplace_back(size(e));
 		e.push_back(Edge{ a, b, cap, 0 });
 		
@@ -44,7 +45,7 @@ template<typename T> struct Dinic {
 		}
 		return (level[sink] != -1);
 	}
-	T sendFlow(int cur, T curFlow) {
+	int sendFlow(int cur, int curFlow) {
 		if (cur == sink || curFlow == 0) return curFlow;
 		for (; edgeCount[cur] < size(adj[cur]); ++edgeCount[cur]) {
 				int curID = adj[cur][edgeCount[cur]];
@@ -60,11 +61,11 @@ template<typename T> struct Dinic {
 		}
 		return 0;
 	}
-	T maxFlow() {
-		T f = 0;
+	int maxFlow() {
+		int f = 0;
 		while(bfs()) {
 			fill(all(edgeCount), 0);
-			while (T tmpFlow=sendFlow(src, INFLL)) f += tmpFlow;
+			while (int tmpFlow=sendFlow(src, INFLL)) f += tmpFlow;
 		}
 		return f;
 	}

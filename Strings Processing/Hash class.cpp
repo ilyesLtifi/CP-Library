@@ -7,7 +7,7 @@
 
 struct Hash{
     vector<int> h;
-    const int p = 2e4;
+    const int p = some_prime_number;
     Hash(int val[], int n){
         h.clear();
         int curH = 0;
@@ -21,6 +21,6 @@ struct Hash{
     int rangeHash(int l, int r){
         int b = h[r];
         int a = (l == 0) ? 0 : h[l-1];
-        return mul(add(b,-a),inv(powM(p,l)));
+        return mul(add(b,-a),inv(power(p,l)));
     }
 };
