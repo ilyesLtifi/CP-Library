@@ -6,6 +6,7 @@
 */
 
 struct SegmentTree{
+	// #define int long long
 	int n, sum[4*N], lazy[4*N];
     SegmentTree(int nn){ n = 1<<(__lg(nn-1)+1); }
 	
@@ -22,20 +23,20 @@ struct SegmentTree{
         sum[i] = sum[2*i] + sum[2*i+1];
     }
 
-    LL Sum(const int& qL, const int& qR){ return Sum(qL, qR, 1, 1, n); }
-	LL Sum(const int& qL, const int& qR, int i, int st, int en) {
+    int Sum(int qL, int qR){ return Sum(qL, qR, 1, 1, n); }
+	int Sum(int qL, int qR, int i, int st, int en) {
         if(lazy[i]) pushDown(i, st, en);
 		if (en < qL || qR < st) return 0;
         if (qL <= st && en <= qR) return sum[i];
  
 		int mid = (st + en)/2;
-		LL l = Sum(qL, qR, 2*i, st, mid);
-		LL r = Sum(qL, qR, 2*i+1, mid+1, en); 
+		int l = Sum(qL, qR, 2*i, st, mid);
+		int r = Sum(qL, qR, 2*i+1, mid+1, en); 
 		return l + r;
 	}
 	
-    void Add(const int& qL, const int& qR, const LL& qVal){ Add(qL, qR, qVal, 1, 1, n); }
-	void Add(const int& qL, const int& qR, const LL& qVal, int i, int st, int en) {
+    void Add(int qL, int qR, int qVal){ Add(qL, qR, qVal, 1, 1, n); }
+	void Add(int qL, int qR, int qVal, int i, int st, int en) {
         if(lazy[i]) pushDown(i, st, en);
         if (en < qL || qR < st) return;
         if (qL <= st && en <= qR){

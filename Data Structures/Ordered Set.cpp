@@ -1,8 +1,8 @@
 /**
 * An Ordered Set is just what is sounds like.
-* A regular C++ Set<> plus 2 functions that add elements ordering (explained below)
+* A regular C++ Set<> plus 2 functions that add elements' ordering (explained below)
 * It is reasonably fast and I always use it when I can instead of segment trees
-* because they are short and they most likely do the job
+* because they are short and they will most likely do the job
 * I also created another class to mimic ordering for C++ Multiset<> that supports duplicate elements
 */
 

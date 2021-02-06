@@ -18,7 +18,7 @@ vector<Point> convexHull(vector<Point>&pnts) {
     up.push_back(p1);
     down.push_back(p1);
 
-    for (int i = 1; i < size(pnts); i++) {
+    for(int i = 1; i < size(pnts); i++) {
         if (i == size(pnts) - 1 || cw(p1, pnts[i], p2)) {
             while (size(up) >= 2 && !cw(up[size(up)-2], up[size(up)-1], pnts[i])) up.pop_back();
             up.push_back(pnts[i]);
@@ -31,8 +31,8 @@ vector<Point> convexHull(vector<Point>&pnts) {
     }
 
     vector<Point> hull;
-    for (int i = 0; i < (int)up.size(); i++) hull.push_back(up[i]);
-    for (int i = down.size() - 2; i > 0; i--) hull.push_back(down[i]);
+    for(int i = 0; i < (int)up.size(); i++) hull.push_back(up[i]);
+    for(int i = down.size() - 2; i > 0; i--) hull.push_back(down[i]);
     
     return hull;
 }
