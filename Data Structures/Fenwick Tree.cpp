@@ -6,12 +6,10 @@
 * 		return the sum of [l; r] interval in the array
 */
 
-struct Fenwick {
-	// #define int long long
-	int n; int arr[SIZE+2];
-	Fenwick(){}
-	Fenwick(int _n){ n=_n; memset(arr, 0, sizeof(arr)); }
-	void add(int qI, int qVal) { while(qI <= n){ arr[qI] += qVal; qI += (qI & -qI); } }
-	int sum(int qI) { int ans = 0; while(qI > 0){ ans += arr[qI]; qI -= (qI & -qI); } return ans; }
-	int sum(int qL, int qR){ return (qL <= qR) ? querySum(qR) - querySum(qL-1) : 0; }
+template<typename T> struct Fenwick {
+	int n; T arr[N+2];
+	Fenwick(int _n){ n=_n; }
+	void Add(int qI, T qVal) { while(qI <= n){ arr[qI] += qVal; qI += (qI & -qI); } }
+	T Sum(int qI) { T ans = 0; while(qI > 0){ ans += arr[qI]; qI -= (qI & -qI); } return ans; }
+	T Sum(int qL, int qR){ return (qL <= qR) ? querySum(qR) - querySum(qL-1) : 0; }
 };

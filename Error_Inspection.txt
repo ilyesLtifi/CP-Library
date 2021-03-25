@@ -54,7 +54,7 @@
     *) Read numbers N < 2^M where M = 60
     *) Manpulating bit masks with N >= 32, E.g. 1<<40
     *) Multiplications( cross product ) & powers & Base conversions.
-    *) Is whole code handeled for OVERFLOW or it is a mix of int and long ?!
+    *) Is whole code handeled for OVERFLOW or it is a mix of int and long long ?!
         *) 1<<x or 1LL<<x
     *) Correct overflow handling
         *) E.g use if( a*b > OO)  or  if( a > OO/b)
