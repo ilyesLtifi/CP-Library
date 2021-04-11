@@ -6,10 +6,11 @@
 */
 
 namespace FFT{
-	void fft(vector<complex<float>>& a, bool invert) {
+	const double PI = acos(-1.0);
+	void fft(vector<complex<double>>& a, bool invert) {
 		int n = size(a);
 		if(n == 1) return;
-		vector<complex<float>> y0(n/2), y1(n/2);
+		vector<complex<double>> y0(n/2), y1(n/2);
 		for (int i = 0, j = 0; i < n; i += 2, ++j) {
 			y0[j] = a[i];
 			y1[j] = a[i + 1];
@@ -18,8 +19,8 @@ namespace FFT{
 		fft(y0, invert);
 		fft(y1, invert);
 
-		float ang = ((2.0 * PI) / n) * (invert ? -1 : 1);
-		complex<float> w(1) , wn(cos(ang), sin(ang));
+		double ang = ((2.0 * PI) / n) * (invert ? -1 : 1);
+		complex<double> w(1) , wn(cos(ang), sin(ang));
 
 		for (int k = 0; k < n / 2; ++k) {
 			a[k] = y0[k] + w * y1[k];
@@ -34,11 +35,11 @@ namespace FFT{
 		while (n < max(size(a) , size(b))) n <<= 1;
 		n <<= 1;
 
-		vector<complex<float>> fx(all(a)) , fy(all(b));
+		vector<complex<double>> fx(all(a)) , fy(all(b));
 		fx.resize (n) , fy.resize (n);
 		fft(fx, false) , fft(fy, false);
 
-		vector<complex<float>> hx(n);
+		vector<complex<double>> hx(n);
 		for (int i = 0; i < n; ++i) hx[i] = fx[i] * fy[i];
 		fft(hx, true);
 
