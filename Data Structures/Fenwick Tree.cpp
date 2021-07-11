@@ -6,10 +6,12 @@
 * 		return the sum of [l; r] interval in the array
 */
 
+
 template<typename T> struct Fenwick {
-	int n; T arr[N+2];
-	Fenwick(int _n){ n=_n; }
-	void Add(int qI, T qVal) { while(qI <= n){ arr[qI] += qVal; qI += (qI & -qI); } }
-	T Sum(int qI) { T ans = 0; while(qI > 0){ ans += arr[qI]; qI -= (qI & -qI); } return ans; }
-	T Sum(int qL, int qR){ return (qL <= qR) ? querySum(qR) - querySum(qL-1) : 0; }
+    int n; T arr[N+2];
+    Fenwick(int _n){ n=_n; }
+    void clear(){ memset(arr, 0, sizeof(arr)); }
+    void Add(int qI, T qVal) { while(qI <= n){ arr[qI] += qVal; qI += (qI & -qI); } }
+    T Sum(int qI) { T ans = 0; while(qI > 0){ ans += arr[qI]; qI -= (qI & -qI); } return ans; }
+    T Sum(int qL, int qR){ return (qL <= qR) ? Sum(qR) - Sum(qL-1) : 0; }
 };
